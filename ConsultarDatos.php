@@ -34,7 +34,7 @@ if (isset($_GET['name']) && isset($_GET['Date']) && isset($_GET['Date2'])) {
         $date = $_GET['Date'];
         $date2 = $_GET['Date2'];
         $sql = "SELECT name, last_name,document,userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
-FROM game.usuarios WHERE userName = '$name' AND ultima_conexion BETWEEN '$date' AND '$date2'";
+FROM game.usuarios WHERE name = '$name' AND ultima_conexion BETWEEN '$date' AND '$date2'";
     }elseif ($_GET['Date'] != "" && $_GET['Date2'] != "" ){
         $date = $_GET['Date'];
         $date2 = $_GET['Date2'];
@@ -43,7 +43,7 @@ FROM game.usuarios WHERE ultima_conexion BETWEEN '$date' AND '$date2'";
     }elseif ($_GET['name'] != ""){
         $name = $_GET['name'];
         $sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
-FROM game.usuarios WHERE userName = '$name'";
+FROM game.usuarios WHERE name = '$name'";
     }else{
         $sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
 FROM game.usuarios";
