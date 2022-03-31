@@ -37,7 +37,7 @@ else {
     $sql = "INSERT INTO game.usuarios SET userName = '$userName', email = '$email', password = '$pass', name = '$name', last_name = '$lastName', document = '$document'";
     $pdo->query($sql);
 
-    $data = array('done' => false , 'message'=> "Usuario creado correctamente" );
+    $data = array('done' => true, 'message'=> "Usuario creado correctamente" );
     Header('Content-Type: application/json');
     echo json_encode($data);
     exit();

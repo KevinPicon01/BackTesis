@@ -2,7 +2,7 @@
 include "dbConnection.php";
 $userName = $_POST['userName'];
 
-$sql = "SELECT recompensa from Game.usuarios where userName = '$userName'";
+$sql = "SELECT recompensa from game.usuarios where userName = '$userName'";
 $result = $pdo->query($sql);
 $r = $result->fetchAll();
 $date2 = new DateTime("now");
