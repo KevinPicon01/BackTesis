@@ -6,7 +6,7 @@ include "dbConnection.php";
 
 
 
-$sql = "SELECT userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa FROM game.usuarios ";
+$sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa FROM game.usuarios ";
 
 
 if (isset($_GET['name'])) {
@@ -33,19 +33,19 @@ if (isset($_GET['name']) && isset($_GET['Date']) && isset($_GET['Date2'])) {
         $name = $_GET['name'];
         $date = $_GET['Date'];
         $date2 = $_GET['Date2'];
-        $sql = "SELECT userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
+        $sql = "SELECT name, last_name,document,userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
 FROM game.usuarios WHERE userName = '$name' AND ultima_conexion BETWEEN '$date' AND '$date2'";
     }elseif ($_GET['Date'] != "" && $_GET['Date2'] != "" ){
         $date = $_GET['Date'];
         $date2 = $_GET['Date2'];
-        $sql = "SELECT userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
+        $sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
 FROM game.usuarios WHERE ultima_conexion BETWEEN '$date' AND '$date2'";
     }elseif ($_GET['name'] != ""){
         $name = $_GET['name'];
-        $sql = "SELECT userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
+        $sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
 FROM game.usuarios WHERE userName = '$name'";
     }else{
-        $sql = "SELECT userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
+        $sql = "SELECT name, last_name,document, userName, derivadas,record_derivadas, funciones,record_funciones, limites, record_limites, ultima_conexion, recompensa 
 FROM game.usuarios";
     }
 }
@@ -112,26 +112,39 @@ $r = $result->fetchAll();
         </div>
       </div>
       <div class="col-12 col-lg-9 mt-5 mt-lg-0">
-        <div class="card overflow-x">
+        <div class="card ">
           <div class="card-header py-3 bg-primary text-white">
             <h3 class="mb-0">Usuarios</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body overflow-x">
             <table class="table table-hover table-striped ">
               <tr class="table-dark">
                 <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Documento</th>
+                <th>Usuario</th>
                 <th>Derivadas</th>
-                <th>Record Derivadas</th>
+                <th>Rec Derivadas</th>
                 <th>Limites</th>
-                <th>Record Limites</th>
+                <th>Rec Limites</th>
                 <th>Funciones</th>
-                <th>Record Funciones</th>
-                <th>Ultima Conexion</th>
+                <th>Rec Funciones</th>
+                <th >Ultima Conexion</th>
+                <th >
+
+                </th>
                 <th>Ultima Recompensa</th>
               </tr>
               <?php foreach ($r as $v) { ?>
               <tr>
                 <td>
+                  <?= $v['name'];  ?>
+                </td><td>
+                  <?= $v['last_name'];  ?>
+                </td><td>
+                  <?= $v['document'];  ?>
+                </td>
+                  <td>
                   <?= $v['userName'];  ?>
                 </td>
                 <td>
@@ -152,7 +165,7 @@ $r = $result->fetchAll();
                 <td>
                   <?= $v['record_funciones'];  ?>
                 </td>
-                <td>
+                <td colspan="2">
                   <?= $v['ultima_conexion'];  ?>
                 </td>
                 <td>

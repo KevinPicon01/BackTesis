@@ -3,6 +3,9 @@ include "dbConnection.php";
 
 $data="";
 $userName = $_POST['userName'];
+$name = $_POST['name'];
+$lastName = $_POST['lastName'];
+$document = $_POST['doc'];
 $email    = $_POST['email'];
 $pass     = hash("sha256", $_POST['pass'] );
 $mult     = 1;
@@ -31,7 +34,7 @@ else {
   }
   else {
 
-    $sql = "INSERT INTO game.usuarios SET userName = '$userName', email = '$email', password = '$pass'";
+    $sql = "INSERT INTO game.usuarios SET userName = '$userName', email = '$email', password = '$pass', name = '$name', last_name = '$lastName', document = '$document'";
     $pdo->query($sql);
 
     $data = array('done' => false , 'message'=> "Usuario creado correctamente" );
